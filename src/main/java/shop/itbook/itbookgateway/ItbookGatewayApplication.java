@@ -10,6 +10,7 @@ public class ItbookGatewayApplication {
 		System.out.println("git action test");
 		System.out.println("git action test - 02");
 		System.out.println("git action tset - 04");
+		System.out.println("git action test development branch");
 		SpringApplication.run(ItbookGatewayApplication.class, args);
 	}
 
