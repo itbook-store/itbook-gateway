@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ItbookGatewayApplication {
 
 	public static void main(String[] args) {
+		System.out.println("git action test");
 		SpringApplication.run(ItbookGatewayApplication.class, args);
 	}
 
