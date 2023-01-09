@@ -30,19 +30,19 @@ public class GatewayConfig {
     @Value("${itbook.batch.server}")
     private String batchServer;
 
-    @Value("${itbook.api.front}")
+    @Value("${itbook.front.api}")
     private String frontApiPattern;
 
-    @Value("${itbook.api.auth}")
+    @Value("${itbook.auth.api}")
     private String authApiPattern;
 
-    @Value("${itbook.api.shop}")
+    @Value("${itbook.shop.api}")
     private String shopApiPattern;
 
-    @Value("${itbook.api.delivery}")
+    @Value("${itbook.delivery.api}")
     private String deliveryApiPattern;
 
-    @Value("${itbook.api.batch}")
+    @Value("${itbook.batch.api}")
     private String batchApiPattern;
 
     /**
