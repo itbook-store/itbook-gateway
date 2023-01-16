@@ -1,5 +1,6 @@
 package shop.itbook.itbookgateway.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @author 강명관
  * @since 1.0
  */
+@Slf4j
 @Configuration
 public class GatewayConfig {
 
@@ -53,6 +55,7 @@ public class GatewayConfig {
      */
     @Bean
     public RouteLocator routeLocator(RouteLocatorBuilder builder) {
+        log.info("Gateway connection success");
         return builder.routes()
             .route("front", r -> r.path(frontApiPattern)
                 .uri(frontServer))
