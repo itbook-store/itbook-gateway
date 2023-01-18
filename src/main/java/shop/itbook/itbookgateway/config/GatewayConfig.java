@@ -32,6 +32,9 @@ public class GatewayConfig {
     @Value("${itbook.batch.server}")
     private String batchServer;
 
+    @Value("${itbook.shop-load.server}")
+    private String shopLoadServer;
+
     @Value("${itbook.front.api}")
     private String frontApiPattern;
 
@@ -62,7 +65,7 @@ public class GatewayConfig {
             .route("auth", r -> r.path(authApiPattern)
                 .uri(authServer))
             .route("shop", r -> r.path(shopApiPattern)
-                .uri(shopServer))
+                .uri(shopLoadServer))
             .route("delivery", r -> r.path(deliveryApiPattern)
                 .uri(deliveryServer))
             .route("batch", r -> r.path(batchApiPattern)
