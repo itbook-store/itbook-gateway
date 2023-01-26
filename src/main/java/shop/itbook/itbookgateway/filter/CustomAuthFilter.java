@@ -12,6 +12,8 @@ import shop.itbook.itbookgateway.token.TokenUtil;
 import shop.itbook.itbookgateway.token.dto.TokenDto;
 
 /**
+ * 프론트서버에서 넘어온 요청 헤더의 JWT 토큰을 복호화하고, Back 서버로 전송해주는 필터입니다.
+ *
  * @author 강명관
  * @since 1.0
  */
