@@ -1,11 +1,16 @@
 package shop.itbook.itbookgateway.config;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import shop.itbook.itbookgateway.exception.handler.CustomExceptionHandler;
+import shop.itbook.itbookgateway.filter.CustomAuthFilter;
+import shop.itbook.itbookgateway.token.TokenUtil;
 
 /**
  * 게이트웨이 라우팅을 위한 설정입니다.
@@ -14,8 +19,11 @@ import org.springframework.context.annotation.Configuration;
  * @since 1.0
  */
 @Slf4j
+@RequiredArgsConstructor
 @Configuration
 public class GatewayConfig {
+
+    private final TokenUtil tokenUtil;
 
     @Value("${itbook.front.server}")
     private String frontServer;
@@ -58,13 +66,14 @@ public class GatewayConfig {
      */
     @Bean
     public RouteLocator routeLocator(RouteLocatorBuilder builder) {
-        log.info("Gateway connection success");
         return builder.routes()
             .route("front", r -> r.path(frontApiPattern)
                 .uri(frontServer))
             .route("auth", r -> r.path(authApiPattern)
                 .uri(authServer))
             .route("shop", r -> r.path(shopApiPattern)
+                .filters(f -> f.filter(
+                    new CustomAuthFilter().apply(new CustomAuthFilter.Config(tokenUtil))))
                 .uri(shopLoadServer))
             .route("delivery", r -> r.path(deliveryApiPattern)
                 .uri(deliveryServer))
@@ -72,4 +81,11 @@ public class GatewayConfig {
                 .uri(batchServer))
             .build();
     }
+
+    @Bean
+    public ErrorWebExceptionHandler customExceptionHandler() {
+        return new CustomExceptionHandler();
+    }
+
+
 }
