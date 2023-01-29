@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @author 강명관
  * @since 1.0
  */
-@ResponseStatus(HttpStatus.BAD_REQUEST)
+@ResponseStatus(HttpStatus.FORBIDDEN)
 public class InvalidTokenRequestException extends RuntimeException {
 
     private static final String MESSAGE = "잘못된 토큰 형식에 대한 요청입니다.";

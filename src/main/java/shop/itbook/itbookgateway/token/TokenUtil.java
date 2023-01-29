@@ -25,6 +25,7 @@ import shop.itbook.itbookgateway.token.dto.TokenDto;
 @Configuration
 public class TokenUtil {
 
+    /* TODO -> SecureKeyManager 을 통한 secretKey 관리 */
     private String secretKey;
 
     private static final String SIGNATURE_EXCEPTION_MESSAGE = "잘못된 토큰 형식입니다.";
@@ -43,7 +44,6 @@ public class TokenUtil {
             .parseClaimsJws(token);
 
         if (!checkTokenValidTime(claimsJws.getBody())) {
-            /* TODO -> 토큰 재발급 해줘야 됨. */
             throw new SignatureException(SIGNATURE_EXCEPTION_MESSAGE);
         }
 
