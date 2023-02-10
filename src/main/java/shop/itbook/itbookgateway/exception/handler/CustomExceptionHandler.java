@@ -45,7 +45,7 @@ public class CustomExceptionHandler implements ErrorWebExceptionHandler {
         }
 
         log.error("exceptionResponse {}", exceptionResponse);
-
+        log.error("exceptionResponse Message {}", exceptionResponse.getHeader().getResultMessage());
         byte[] bytes = error.getBytes(StandardCharsets.UTF_8);
         DataBuffer buffer = response.bufferFactory().wrap(bytes);
         response.setStatusCode(HttpStatus.FORBIDDEN);
