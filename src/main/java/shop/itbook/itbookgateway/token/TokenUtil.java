@@ -48,7 +48,7 @@ public class TokenUtil {
         }
 
         return new TokenDto(
-            String.valueOf(claimsJws.getBody().get("principal")),
+            String.valueOf(claimsJws.getBody().get("memberNo")),
             getAuthorityList(claimsJws)
         );
     }
