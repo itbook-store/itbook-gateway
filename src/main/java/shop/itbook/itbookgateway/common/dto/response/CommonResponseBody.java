@@ -3,6 +3,7 @@ package shop.itbook.itbookgateway.common.dto.response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * 프로젝트 공통 응답객체 입니다.
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
  * @author 강명관
  * @since 1.0
  */
+@ToString
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,6 +26,7 @@ public class CommonResponseBody<T> {
      * @author 강명관
      * @since 1.0
      */
+    @ToString
     @AllArgsConstructor
     @NoArgsConstructor
     @Getter
